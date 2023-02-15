@@ -1,3 +1,4 @@
+package exp_1;
 // WAP to print student details using object
 
 class student {

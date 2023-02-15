@@ -1,3 +1,4 @@
+package exp_1;
 // WAP to perform basic arithmetic operation on two variables
 
 public class arithmetic {
