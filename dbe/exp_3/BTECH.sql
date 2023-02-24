@@ -1,3 +1,5 @@
+-- From question 14
+
 CREATE TABLE BTECHSTUDENT(
     NAME VARCHAR2(20),
     ROLL_NO NUMBER(3),
