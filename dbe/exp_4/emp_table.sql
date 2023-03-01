@@ -1,0 +1,60 @@
+-- From question 4
+
+CREATE TABLE EMPLOYEE(
+    E_ID NUMBER(4),
+    NAME VARCHAR2(20),
+    SALARY NUMBER(6),
+    DESIGNATION VARCHAR2(10)
+);
+
+INSERT INTO EMPLOYEE VALUES(
+    1,
+    'Abhay',
+    4000,
+    'CTO'
+);
+
+INSERT INTO EMPLOYEE VALUES(
+    31,
+    'Harsh',
+    12000,
+    'CEO'
+);
+
+INSERT INTO EMPLOYEE VALUES(
+    74,
+    'Pandey',
+    8400,
+    'CFO'
+);
+
+SELECT
+    SALARY+15000
+FROM
+    EMPLOYEE;
+
+SELECT
+    *
+FROM
+    EMPLOYEE
+WHERE
+    NAME LIKE 'A%';
+
+SELECT
+    E_ID AS EMPLOYEE_ID
+FROM
+    EMPLOYEE;
+
+SELECT
+    *
+FROM
+    EMPLOYEE
+WHERE
+    SALARY>5000;
+
+SELECT
+    NAME
+FROM
+    EMPLOYEE
+WHERE
+    SALARY<=4000;
