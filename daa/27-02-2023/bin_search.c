@@ -27,6 +27,26 @@ void inorder(struct node *root)
     }
 }
 
+void preorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        printf("%d ", root->key);
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+void postorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->key);
+    }
+}
+
 struct node *insert(struct node *node, int key)
 {
     if (node == NULL)
@@ -75,20 +95,70 @@ struct node *deleteNode(struct node *root, int key)
     return root;
 }
 
+struct node *search(struct node *root, int key)
+{
+    if (root == NULL || root->key == key)
+        return root;
+    if (root->key < key)
+        return search(root->right, key);
+    return search(root->left, key);
+}
+
 int main()
 {
     struct node *root = NULL;
-    root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    insert(root, 60);
-    insert(root, 80);
-    printf("Inorder traversal of the given tree \n");
-    inorder(root);
-    printf("\nAfter deleting 20\n");
-    root = deleteNode(root, 20);
-    printf("Inorder traversal of the modified tree \n");
-    inorder(root);
+    int choice, key;
+    while (1)
+    {
+        printf("\n 1. Insert a node in the tree (insert) ");
+        printf("\n 2. Delete a node from the tree (delete) ");
+        printf("\n 3. Search a node in the tree (search) ");
+        printf("\n 4. Inorder traversal of the tree (inorder) ");
+        printf("\n 5. Preorder traversal of the tree (preorder) ");
+        printf("\n 6. Postorder traversal of the tree (postorder) ");
+        printf("\n 7. Exit ");
+        printf("\n Enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("\n Enter the key to be inserted : ");
+            scanf("%d", &key);
+            root = insert(root, key);
+            break;
+        case 2:
+            printf("\n Enter the key to be deleted : ");
+            scanf("%d", &key);
+            root = deleteNode(root, key);
+            break;
+        case 3:
+            printf("\n Enter the key to be searched : ");
+            scanf("%d", &key);
+            if (search(root, key) != NULL)
+                printf("\n Key found ");
+            else
+                printf("\n Key not found ");
+            break;
+        case 4:
+            printf("\n Inorder traversal of the tree : ");
+            inorder(root);
+            printf(" ");
+            break;
+        case 5:
+            printf("\n Preorder traversal of the tree : ");
+            preorder(root);
+            printf(" ");
+            break;
+        case 6:
+            printf("\n Postorder traversal of the tree : ");
+            postorder(root);
+            printf(" ");
+            break;
+        case 7:
+            exit(0);
+        default:
+            printf("\n Wrong choice ");
+        }
+    }
+    return 0;
 }
